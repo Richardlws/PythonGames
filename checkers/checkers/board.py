@@ -9,7 +9,7 @@ class Board:
         self.red_left = self.white_left = 12
         self.red_kings = self.white_kings = 0
 
-    def draw_cubes(self, win):
+    def draw_squares(self, win):
         win.fill(BLACK)
         for row in range(ROWS):
             for col in range(row % 2, ROWS, 2):
