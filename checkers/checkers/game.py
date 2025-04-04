@@ -69,9 +69,9 @@ class Game:
     def get_board(self):
         return self.board
 
-    def ai_move(self):
-        self.board = Board
+    def ai_move(self, board):
+        if board is None:
+            print("AI move failed: received None board")
+            return
+        self.board = board
         self.change_turn()
-
-
-
