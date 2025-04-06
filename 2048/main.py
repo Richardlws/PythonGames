@@ -82,18 +82,27 @@ def draw(window, tiles):
     window.fill(BACKGROUND_COLOR)
 
     for tile in tiles.values():
-        tile.draw()
+        tile.draw(window)
 
     draw_grid(window)
 
     pygame.display.update()
 
 
+def generate_titles():
+    tiles = {}
+    for _ in range(2):
+        row, col = get_random_pos(tiles)
+        tiles[f"{row}{col}"] = Tile(2, row, col)
+
+    return tiles
+
+
 def main(window):
     clock = pygame.time.Clock()
     run = True
 
-    tiles = {}
+    tiles = {"00": Tile(4, 0, 0), "20": Tile(128, 2, 0), "02": Tile(64, 0, 2)}
 
     while run:
         clock.tick(FPS)
@@ -103,7 +112,7 @@ def main(window):
                 run = False
                 break
 
-        draw(window)
+        draw(window, tiles)
 
     pygame.quit()
 
