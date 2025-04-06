@@ -89,6 +89,19 @@ def draw(window, tiles):
     pygame.display.update()
 
 
+def get_random_pos(tiles):
+    row = None
+    col = None
+    while True:
+        row = random.randrange(0, ROWS)
+        col = random.randrange(0, COLS)
+
+        if f"{row}{col}" not in tiles:
+            break
+
+    return row, col
+
+
 def generate_titles():
     tiles = {}
     for _ in range(2):
@@ -102,7 +115,9 @@ def main(window):
     clock = pygame.time.Clock()
     run = True
 
-    tiles = {"00": Tile(4, 0, 0), "20": Tile(128, 2, 0), "02": Tile(64, 0, 2)}
+    tiles = generate_titles()
+
+    # tiles = {"00": Tile(4, 0, 0), "20": Tile(128, 2, 0), "02": Tile(64, 0, 2)}
 
     while run:
         clock.tick(FPS)
